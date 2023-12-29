@@ -1,0 +1,86 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.login-wrapper{
+   position: fixed;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   background-color: rgba(189, 189, 189, 0.9);
+}
+.login-form{
+   display: flex;
+   flex-direction: column;
+   padding: 3rem;
+   position: fixed;
+   max-width: 40rem;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: #fff;
+   border-radius: 0.5rem;
+}
+.login-form-top{
+   display: flex;
+   justify-content: space-between;
+}
+.login-form-container{
+   display: flex;
+   flex-direction: column;
+   align-self: center;
+   gap: 0.5rem;
+}
+.oauth-btn{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 3rem;
+   margin-left: 4.5rem;
+   margin-right: 4rem;
+   box-sizing: border-box;
+   border: solid black 0.1rem;
+   border-radius: 1.5rem;
+}
+.oauth-btn p{
+   margin-bottom: 0;
+}
+.login-form-input{
+   height: 3rem;
+   width: 25rem;
+   border-radius: 1rem;
+   padding-left: 0.3rem;
+}
+.submit-btn{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 3rem;
+   width: 25rem;
+   border-radius: 1.5rem;
+   background-color: gainsboro;
+   color: darkgrey;
+   font-weight: bold;
+}
+.form-change-text{
+   display: flex;
+   justify-content: flex-start;
+   gap: 0.5rem;
+}
+.form-change-text a{
+   text-decoration: none;
+}
+.submit-btn:hover{
+   background-color:orangered;
+   color: #fff;
+}
+.divider{
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
+}
+.divider-rule{
+   width: 10rem;
+}

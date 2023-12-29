@@ -1,0 +1,104 @@
+.top-navbar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.3rem 2.5rem 0;
+    background-color: white;
+}
+.reddit-logo{
+    height: 90%;
+    width: 7rem;
+}
+.search-input-container{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 28px;
+    padding: 0rem 0.8rem;
+    transition: box-shadow 0.25s;
+}
+.search-input-container:focus-within{
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.75);
+}
+.search-icon{
+   padding-left: 0.4rem;
+   color: rgba(0, 0, 0, 0.50);
+}
+.input-search{
+    width: 42rem;
+    height: 90%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1rem;
+    padding-left: 0.3rem;
+}
+.buttons-topnavbar-end{
+    display: flex;
+    justify-content: space-around;
+    gap: 0.4rem;
+}
+button{
+    border-radius: 5rem;
+}
+.get-app-btn{
+    background-color:lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    border: 0;
+    font-weight: 600;
+    font-size: small;
+    width: 6.5rem;
+    border-radius: 5rem;
+}
+.log-in-btn{
+    background-color: #d93a00;
+    color: white;
+    font-size: small;
+    border: 0;
+    font-weight: 700;
+    width: 4.3rem;
+}
+.sign-up-btn{
+    background-color: black;
+    color: white;
+    font-size: small;
+    border: 0;
+    font-weight: 700;
+    width: 4.3rem;
+}
+.dropdown-login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.dropdown-login-img{
+    height: 2rem;
+    border-radius: 1rem;
+}
+.new-post-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 5rem;
+    background-color: #d93a00;
+    color: white;
+    font-size: small;
+    font-weight: 700;
+    height: 2.3rem;
+    width: 6rem;
+}
+.get-app-btn:hover{
+    background-color: grey;
+}
+.log-in-btn:hover, .new-post-btn:hover{
+    background-color: darkred;
+}
+.more-options-btn:hover{
+    background-color: grey;
+}

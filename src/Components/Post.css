@@ -1,0 +1,125 @@
+.post-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: 80%;
+    padding: 2%;
+    gap: 0.5rem;
+}
+.post-container:hover{
+    background-color: #ededed;
+}
+.post-top{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+}
+.post-top-left{
+   display: flex;
+   justify-content: flex-start;
+   gap: 0.2rem;
+}
+.post-top-right{
+    display: flex;
+    justify-content: space-between;
+}
+.headline-container{
+    display: flex;
+    justify-content: flex-start;
+}
+.post-image{
+    display: flex;
+    justify-content: center;
+}
+.post-bottom{
+    display: flex;
+    justify-content: flex-start;
+    gap: 2%;
+}
+.post-top-left img{
+    border-radius: 0.6rem;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+.post-image img{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+.join-btn{
+    height: 1.8rem;
+    width: 2.8rem;
+    background-color: royalblue;
+    color: white;
+    font-weight: 700;
+    border: none;
+}
+.more-btn{
+    display: flex;
+    justify-content: center;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 0.9rem;
+}
+.more-btn:hover{
+    background-color: lightgray;
+}
+.more-btn div{
+    font-size: medium;
+    font-weight: bold;
+}
+.post-voting-btn{
+    display: flex;
+    background-color: #ebecf0;
+    border-radius: 1rem;
+}
+.upvote-btn, .downvote-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+}
+.downvote-btn{
+    transform: rotate(180deg);
+}
+.upvote-btn:hover, .downvote-btn:hover{
+   background-color: lightgrey;
+}
+.vote-count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.separator{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.post-comments, .post-share{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgrey;
+    border-radius: 1rem;
+}
+.comment-count{
+    font-size: small;
+    padding-left: 0.6rem;
+    padding-right: 0.5rem;
+}
+.chat-box{
+    padding-left: 0.5rem;
+}
+.send-icon{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.share-text{
+    padding-right: 0.5rem;
+    font-size: small;
+}
+.vote-btn, .post-comments, .post-share:hover{
+    cursor: pointer;
+}

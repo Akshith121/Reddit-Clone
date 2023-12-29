@@ -1,0 +1,14 @@
+.App-container{
+    font-family: 'Poppins', sans-serif;
+}
+.main-content-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0 4%;
+    gap: 2%;
+}
+.posts-container-wrapper{
+    display: flex;
+    flex-direction: column;
+}
