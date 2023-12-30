@@ -16,7 +16,6 @@ const Signup = (props) => {
     const handleChange = (event) => {
         const {name, value} = event.target;
         setNewUser((prevValue) => {
-            console.log(prevValue);
             return {
                 ...prevValue,
                 [name]: value
@@ -30,9 +29,9 @@ const Signup = (props) => {
         .then((data) => {
             if(data.status === 201){
                 props.closeSignup();
-                props.handleLoginPage();
+                props.handleLoginPage(data.data);
             }
-            console.log(data)
+            console.log(data);
         })
         .catch((err) => console.log(err));
     }

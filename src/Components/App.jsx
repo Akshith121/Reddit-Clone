@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideNavbar from "./SideNavbar";
 import TopNavbar from "./TopNavbar";
 import Post from "./Post";
 import Communities from "./Communities";
 import "./App.css";
+import axios from "axios";
 
 function App() {
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/posts", {withCredentials: true})
+    .then((response) => {
+      setPosts(response.data); 
+    })
+    .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="App-container">
       <TopNavbar />
@@ -13,12 +25,9 @@ function App() {
       <div className="main-content-container">
         <SideNavbar />
         <div className="posts-container-wrapper">
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {posts.map(post => (
+            <Post {...post}/>
+          ))}
         </div>
         <Communities />
       </div>

@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 import "./TopNavbar.css";
+import axios from "axios";
 
 const TopNavbar = () => {
    const [showLogin, setShowLogin] = useState(false);
    const [showSignup, setShowSignup] = useState(false);
    const [loggedIn, setLoggedIn] = useState(false);
+   const [username, setUsername] = useState("");
 
    const handleLoginPage = () => {
-      setLoggedIn(true);
+      setUsername(user);
    }
 
    const handleLoginRoute = () => {
@@ -47,15 +49,19 @@ const TopNavbar = () => {
             </svg> Get app
             </a>
             {!loggedIn && <button type="button" className="log-in-btn" onClick={handleLoginRoute}>Log In</button>}
-            {showLogin && <Login closeLogin={() => closeLogin()} handleLoginPage={() => handleLoginPage()}/>}
+            {showLogin && <Login closeLogin={() => closeLogin()} handleLoginPage={(user) => {
+               console.log(user);
+               handleLoginPage(user)
+            }} />}
             {!loggedIn && <button type="button" className="sign-up-btn" onClick={handleSignupRoute}>Sign Up</button>}
-            {showSignup && <Signup closeSignup={() => closeSignup()} handleLoginPage={() => handleLoginPage()}/>}
+            {showSignup && <Signup closeSignup={() => closeSignup()} handleLoginPage={() => handleLoginPage()} />}
             {loggedIn && <a className="new-post-btn" type="button" >Create Post</a>}
             {loggedIn && <div type="button" className="dropdown-login dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                <img className="dropdown-login-img" src="https://tse3.mm.bing.net/th?id=OIP.7Yxk4ZM3SsfTkrtfJ91xGwHaHa&pid=Api&P=0&h=180"></img>
                <span className="dropdown-toggle"></span>
                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" onClick={() => setLoggedIn(false)}>Log out</a></li>
+                  <li><a class="dropdown-item">{username}</a></li>
+                  <li><a class="dropdown-item" onClick={() => handleLoginPage()}>Log out</a></li>
                </ul>
             </div>}
          </div>
@@ -64,4 +70,3 @@ const TopNavbar = () => {
 }
 
 export default TopNavbar;
-<span className="material-symbols-outlined dropdown-toggle">expand_more</span>
