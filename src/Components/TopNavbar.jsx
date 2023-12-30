@@ -10,8 +10,9 @@ const TopNavbar = () => {
    const [loggedIn, setLoggedIn] = useState(false);
    const [username, setUsername] = useState("");
 
-   const handleLoginPage = () => {
+   const handleLoginPage = (user) => {
       setUsername(user);
+      setLoggedIn(true);
    }
 
    const handleLoginRoute = () => {
@@ -61,7 +62,7 @@ const TopNavbar = () => {
                <span className="dropdown-toggle"></span>
                <ul class="dropdown-menu">
                   <li><a class="dropdown-item">{username}</a></li>
-                  <li><a class="dropdown-item" onClick={() => handleLoginPage()}>Log out</a></li>
+                  <li><a class="dropdown-item" onClick={() => setLoggedIn(false)}>Log out</a></li>
                </ul>
             </div>}
          </div>

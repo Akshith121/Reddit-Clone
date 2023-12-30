@@ -26,12 +26,12 @@ const Signup = (props) => {
     const handleSignup = (event) => {
         event.preventDefault();
         axios.post('http://localhost:4000/register', newUser, {withCredentials: true})
-        .then((data) => {
-            if(data.status === 201){
+        .then((response) => {
+            if(response.status === 201){
                 props.closeSignup();
-                props.handleLoginPage(data.data);
+                props.handleLoginPage(response.data);
             }
-            console.log(data);
+            console.log(response);
         })
         .catch((err) => console.log(err));
     }
