@@ -9,9 +9,10 @@ import axios from "axios";
 function App() {
 
   const [posts, setPosts] = useState([]);
+  const [endpoint, setEndpoint] = useState("Home");
 
   useEffect(() => {
-    axios.get("http://localhost:4000/posts", {withCredentials: true})
+    axios.get(`http://localhost:4000/posts?category=${endpoint}`, {withCredentials: true})
     .then((response) => {
       setPosts(response.data); 
     })
