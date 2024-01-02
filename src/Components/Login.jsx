@@ -1,6 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import "./Login.css";
@@ -12,8 +11,13 @@ const Login = (props) => {
         password: ""
     });
 
+    const [userNotFound, setuserNotFound] = useState(false);
+    const [wrongPass, setWrongPass] = useState(false);
+
     const handleChange = (event) => {
         const {name, value} = event.target;
+        setuserNotFound(false);
+        setWrongPass(false);
         setUser((prevValue) => {
             console.log(prevValue);
             return {
@@ -26,22 +30,22 @@ const Login = (props) => {
     const handleLogin = (event) => {
         event.preventDefault();
         axios.post('http://localhost:4000/login', user, {withCredentials: true})
-        .then((data) => {
-            if(data.status == 200){
+        .then((response) => {
+            if(response.status == 200){
                 props.closeLogin();
-                props.handleLoginPage();
+                props.handleLoginPage(response.data.username);
             }
-            else if(data.status == 401){
-                console.log("Please enter correct password!");
-                alert("Please enter correct password!");
-            }
-            else if(data.status == 400){
-                console.log("Try signing in first!");
-                alert("Try signing in first!");
-            }
-            console.log(data)
+            console.log(response)
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            if(err.response.status == 401){
+                setWrongPass(true);
+            }
+            else if(err.response.status == 400){
+                setuserNotFound(true);
+                console.log("Try signing in first!");
+            }
+            console.log(err)});
     }
 
     useEffect(() => {
@@ -84,6 +88,8 @@ const Login = (props) => {
                         <p>New to reddit? </p>
                         <a href="#">Sign up</a>
                     </div>
+                    {userNotFound && <p className="errorMssg">User Not Found, try signing in!</p>}
+                    {wrongPass && <p className="errorMssg">wrong password, try again!</p>}
                     <div onClick={handleLogin} className="submit-btn" type="button">
                        Log in
                     </div>

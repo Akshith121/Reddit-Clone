@@ -13,8 +13,15 @@ const Signup = (props) => {
         confirmPassword: ""
     });
 
+    const [userExists, setUserExists] = useState(false);
+    const [samePass, setSamePass] = useState(true);
+    const [emptyPass, setEmptyPass] = useState(false);
+
     const handleChange = (event) => {
         const {name, value} = event.target;
+        setUserExists(false);
+        setSamePass(true);
+        setEmptyPass(false);
         setNewUser((prevValue) => {
             return {
                 ...prevValue,
@@ -31,9 +38,20 @@ const Signup = (props) => {
                 props.closeSignup();
                 props.handleLoginPage(response.data);
             }
-            console.log(response);
+            console.log(response.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            if(err.response.status === 400){
+                setUserExists(true);
+            }
+            else if(err.response.status === 401){
+                setSamePass(false);
+            }
+            else if(err.response.status === 406){
+                setEmptyPass(true);
+            }
+            console.log(err)
+        });
     }
 
     useEffect(() => {
@@ -79,6 +97,9 @@ const Signup = (props) => {
                         <p>Already a redditor?</p>
                         <a href="#">Log in</a>
                     </div>
+                    {userExists && <p className="errorMssg">User already exists with the email provided</p>}
+                    {!samePass && <p className="errorMssg">Please ensure that both the passwords are same</p>}
+                    {emptyPass && <p className="errorMssg">Password cannot be empty, try again!</p>}
                     <div onClick={handleSignup} className="submit-btn" type="button">
                        Sign up
                     </div>

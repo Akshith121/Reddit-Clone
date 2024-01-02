@@ -1,16 +1,25 @@
 import React from "react";
 import "./SideNavbar.css";
 
-const SideNavbar = () => {
+const SideNavbar = (props) => {
+
+  const handleHomeBtnClick = () => {
+     props.handleCategory("home");
+  }
+
+  const handlePopularBtnClick = () => {
+    props.handleCategory("popular");
+ }
+
   return (
     <div className="sideNavbar">
       <div className="sidebar-link">
         <div className="sidebar-menu">
-          <div className="btn sidebar-menu-btn" type="button">
+          <div onClick={handleHomeBtnClick} className="btn sidebar-menu-btn" type="button">
             <span class="material-symbols-outlined">home</span>
             <a>Home</a>
           </div>
-          <div className="btn sidebar-menu-btn" type="button">
+          <div onClick={handlePopularBtnClick} className="btn sidebar-menu-btn" type="button">
             <span class="material-symbols-outlined">whatshot</span>
             <a>Popular</a>
           </div>

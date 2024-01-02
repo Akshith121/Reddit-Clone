@@ -50,6 +50,11 @@
     color: darkgrey;
     font-weight: bold;
  }
+ .errorMssg{
+   color: red;
+   font-size: small;
+   font-weight: 400;
+ }
  .submit-btn:hover{
     background-color:orangered;
     color: #fff;

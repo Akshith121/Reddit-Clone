@@ -7,6 +7,10 @@ const Communities = (props) => {
 
     const [communities, setCommunities] = useState([]); 
 
+    const getCommunity = (data) => {
+      props.handleCommunity(data);
+    }
+
     useEffect(() => {
        axios.get("http://localhost:4000/communities", {withCredentials: true})
        .then((response) => {
@@ -20,7 +24,7 @@ const Communities = (props) => {
         <div className="popular-communities-container">
             <p>POPULAR COMMUNITIES</p>
             {communities.map((community) => (
-               <Community onclick={() => console.log(community.name)} {...community}/>
+               <Community getCommunity={getCommunity} {...community}/>
             ))}
         </div>
     )

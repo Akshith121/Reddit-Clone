@@ -4,14 +4,16 @@ import Signup from "./Signup";
 import "./TopNavbar.css";
 import axios from "axios";
 
-const TopNavbar = () => {
+const TopNavbar = (props) => {
    const [showLogin, setShowLogin] = useState(false);
    const [showSignup, setShowSignup] = useState(false);
    const [loggedIn, setLoggedIn] = useState(false);
    const [username, setUsername] = useState("");
+   const [input, setInput] = useState("");
 
    const handleLoginPage = (user) => {
       setUsername(user);
+      console.log(user);
       setLoggedIn(true);
    }
 
@@ -31,14 +33,24 @@ const TopNavbar = () => {
       setShowSignup(false);
    }
 
+   const handleInputChange = (event) => {
+      const value = event.target.value;
+      setInput(value);
+   }
+
+   const handleInputRequest = (event) => {
+      event.preventDefault();
+      props.handleSearchInput(input);
+   }
+
    return (
       <div className="top-navbar-container">
          <div>
             <img className="reddit-logo" src="https://logos-download.com/wp-content/uploads/2016/06/Reddit_logo_full_1.png" />
          </div>
-         <form className="search-input-container">
+         <form onSubmit={handleInputRequest} className="search-input-container">
             <span className="material-symbols-outlined search-icon">search</span>
-            <input className="input-search" name="search" placeholder="Search Reddit"></input>
+            <input onChange={handleInputChange} className="input-search" name="search" placeholder="Search Reddit"></input>
          </form>
          <div className="buttons-topnavbar-end">
             <a type="button" className="get-app-btn" href="https://play.google.com/store/apps/details?id=com.reddit.frontpage" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-qr-code-scan" viewBox="0 0 16 16">
@@ -50,10 +62,7 @@ const TopNavbar = () => {
             </svg> Get app
             </a>
             {!loggedIn && <button type="button" className="log-in-btn" onClick={handleLoginRoute}>Log In</button>}
-            {showLogin && <Login closeLogin={() => closeLogin()} handleLoginPage={(user) => {
-               console.log(user);
-               handleLoginPage(user)
-            }} />}
+            {showLogin && <Login closeLogin={() => closeLogin()} handleLoginPage={handleLoginPage} />}
             {!loggedIn && <button type="button" className="sign-up-btn" onClick={handleSignupRoute}>Sign Up</button>}
             {showSignup && <Signup closeSignup={() => closeSignup()} handleLoginPage={() => handleLoginPage()} />}
             {loggedIn && <a className="new-post-btn" type="button" >Create Post</a>}
